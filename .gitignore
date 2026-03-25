@@ -1,0 +1,31 @@
+# 依赖目录
+node_modules/
+
+# 编译输出
+artifacts/
+cache/
+dist/
+bundle/
+
+# TypeChain
+typechain-types/
+
+# 覆盖率
+coverage/
+
+# 环境变量
+.env
+
+# IDE
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 日志
+logs/
+*.log
+
+# 临时文件
+*.tmp
