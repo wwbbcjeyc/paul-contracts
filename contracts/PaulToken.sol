@@ -71,7 +71,7 @@ contract PaulToken is ERC20, Ownable {
      * @dev 构造函数
      * 初始化代币并设置默认销毁参数
      * 
-     * @PaulTokenram _initialRewardPool 初始奖励池地址
+     * @param _initialRewardPool 初始奖励池地址
      */
     constructor(address _initialRewardPool) 
         ERC20("PaulTokenul Bailey Token", "PaulTokenUL") 
@@ -195,7 +195,7 @@ contract PaulToken is ERC20, Ownable {
      * 只有所有者可以调用
      * 比例范围：1-10%（防止误操作设置过高比例）
      * 
-     * @PaulTokenram _percent 新的销毁比例（1-10）
+     * @param _percent 新的销毁比例（1-10）
      */
     function setBurnPercent(uint256 _percent) external onlyOwner {
         require(_percent >= 1 && _percent <= 10, "PaulToken: burn percent must be 1-10");
@@ -212,7 +212,7 @@ contract PaulToken is ERC20, Ownable {
      * 只有所有者可以调用
      * 不能设置为零地址
      * 
-     * @PaulTokenram _pool 新的奖励池地址
+     * @param _pool 新的奖励池地址
      */
     function setRewardPool(address _pool) external onlyOwner {
         require(_pool != address(0), "PaulToken: reward pool cannot be zero address");
@@ -229,7 +229,7 @@ contract PaulToken is ERC20, Ownable {
      * 只有所有者可以调用
      * 紧急情况下可以暂停销毁功能
      * 
-     * @PaulTokenram _enable true启用销毁，false禁用销毁
+     * @param _enable true启用销毁，false禁用销毁
      */
     function toggleBurn(bool _enable) external onlyOwner {
         require(_enable != burnEnabled, "PaulToken: same state");

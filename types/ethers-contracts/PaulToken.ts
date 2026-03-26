@@ -6,38 +6,74 @@ import type { TypedContractEvent, TypedDeferredTopicFilter, TypedEventLog, Typed
   
 
   export interface PaulTokenInterface extends Interface {
-    getFunction(nameOrSignature: "MAX_SUPPLY" | "allowance" | "approve" | "balanceOf" | "batchMint" | "decimals" | "mint" | "name" | "owner" | "renounceOwnership" | "symbol" | "totalSupply" | "transfer" | "transferFrom" | "transferOwnership" | "version"): FunctionFragment;
+    getFunction(nameOrSignature: "BURN_DENOMINATOR" | "BURN_TO_REWARD_RATIO" | "BURN_TO_ZERO_RATIO" | "MAX_SUPPLY" | "ONE_DAY" | "allowance" | "approve" | "balanceOf" | "batchMint" | "burnEnabled" | "burnPercent" | "decimals" | "executeBurn" | "getBurnInfo" | "getBurnableAmounts" | "lastBurnTime" | "mint" | "name" | "nextBurnTime" | "owner" | "renounceOwnership" | "rewardPool" | "setBurnPercent" | "setRewardPool" | "symbol" | "toggleBurn" | "totalBurned" | "totalBurnedToZero" | "totalSentToRewardPool" | "totalSupply" | "transfer" | "transferFrom" | "transferOwnership" | "version"): FunctionFragment;
 
-    getEvent(nameOrSignatureOrTopic: "Approval" | "Mint" | "OwnershipTransferred" | "Transfer"): EventFragment;
+    getEvent(nameOrSignatureOrTopic: "Approval" | "BurnExecuted" | "BurnPercentUpdated" | "BurnToggled" | "Mint" | "OwnershipTransferred" | "RewardPoolUpdated" | "Transfer"): EventFragment;
 
-    encodeFunctionData(functionFragment: 'MAX_SUPPLY', values?: undefined): string;
+    encodeFunctionData(functionFragment: 'BURN_DENOMINATOR', values?: undefined): string;
+encodeFunctionData(functionFragment: 'BURN_TO_REWARD_RATIO', values?: undefined): string;
+encodeFunctionData(functionFragment: 'BURN_TO_ZERO_RATIO', values?: undefined): string;
+encodeFunctionData(functionFragment: 'MAX_SUPPLY', values?: undefined): string;
+encodeFunctionData(functionFragment: 'ONE_DAY', values?: undefined): string;
 encodeFunctionData(functionFragment: 'allowance', values: [AddressLike, AddressLike]): string;
 encodeFunctionData(functionFragment: 'approve', values: [AddressLike, BigNumberish]): string;
 encodeFunctionData(functionFragment: 'balanceOf', values: [AddressLike]): string;
 encodeFunctionData(functionFragment: 'batchMint', values: [AddressLike[], BigNumberish[]]): string;
+encodeFunctionData(functionFragment: 'burnEnabled', values?: undefined): string;
+encodeFunctionData(functionFragment: 'burnPercent', values?: undefined): string;
 encodeFunctionData(functionFragment: 'decimals', values?: undefined): string;
+encodeFunctionData(functionFragment: 'executeBurn', values?: undefined): string;
+encodeFunctionData(functionFragment: 'getBurnInfo', values?: undefined): string;
+encodeFunctionData(functionFragment: 'getBurnableAmounts', values?: undefined): string;
+encodeFunctionData(functionFragment: 'lastBurnTime', values?: undefined): string;
 encodeFunctionData(functionFragment: 'mint', values: [AddressLike, BigNumberish]): string;
 encodeFunctionData(functionFragment: 'name', values?: undefined): string;
+encodeFunctionData(functionFragment: 'nextBurnTime', values?: undefined): string;
 encodeFunctionData(functionFragment: 'owner', values?: undefined): string;
 encodeFunctionData(functionFragment: 'renounceOwnership', values?: undefined): string;
+encodeFunctionData(functionFragment: 'rewardPool', values?: undefined): string;
+encodeFunctionData(functionFragment: 'setBurnPercent', values: [BigNumberish]): string;
+encodeFunctionData(functionFragment: 'setRewardPool', values: [AddressLike]): string;
 encodeFunctionData(functionFragment: 'symbol', values?: undefined): string;
+encodeFunctionData(functionFragment: 'toggleBurn', values: [boolean]): string;
+encodeFunctionData(functionFragment: 'totalBurned', values?: undefined): string;
+encodeFunctionData(functionFragment: 'totalBurnedToZero', values?: undefined): string;
+encodeFunctionData(functionFragment: 'totalSentToRewardPool', values?: undefined): string;
 encodeFunctionData(functionFragment: 'totalSupply', values?: undefined): string;
 encodeFunctionData(functionFragment: 'transfer', values: [AddressLike, BigNumberish]): string;
 encodeFunctionData(functionFragment: 'transferFrom', values: [AddressLike, AddressLike, BigNumberish]): string;
 encodeFunctionData(functionFragment: 'transferOwnership', values: [AddressLike]): string;
 encodeFunctionData(functionFragment: 'version', values?: undefined): string;
 
-    decodeFunctionResult(functionFragment: 'MAX_SUPPLY', data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: 'BURN_DENOMINATOR', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'BURN_TO_REWARD_RATIO', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'BURN_TO_ZERO_RATIO', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'MAX_SUPPLY', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'ONE_DAY', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'allowance', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'approve', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'balanceOf', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'batchMint', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'burnEnabled', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'burnPercent', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'decimals', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'executeBurn', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'getBurnInfo', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'getBurnableAmounts', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'lastBurnTime', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'mint', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'name', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'nextBurnTime', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'owner', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'renounceOwnership', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'rewardPool', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'setBurnPercent', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'setRewardPool', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'symbol', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'toggleBurn', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'totalBurned', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'totalBurnedToZero', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'totalSentToRewardPool', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'totalSupply', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'transfer', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'transferFrom', data: BytesLike): Result;
@@ -50,6 +86,42 @@ decodeFunctionResult(functionFragment: 'version', data: BytesLike): Result;
       export type InputTuple = [owner: AddressLike, spender: AddressLike, value: BigNumberish];
       export type OutputTuple = [owner: string, spender: string, value: bigint];
       export interface OutputObject {owner: string, spender: string, value: bigint };
+      export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>
+      export type Filter = TypedDeferredTopicFilter<Event>
+      export type Log = TypedEventLog<Event>
+      export type LogDescription = TypedLogDescription<Event>
+    }
+
+  
+
+    export namespace BurnExecutedEvent {
+      export type InputTuple = [executor: AddressLike, burnAmount: BigNumberish, burnedToZero: BigNumberish, sentToRewardPool: BigNumberish, timestamp: BigNumberish];
+      export type OutputTuple = [executor: string, burnAmount: bigint, burnedToZero: bigint, sentToRewardPool: bigint, timestamp: bigint];
+      export interface OutputObject {executor: string, burnAmount: bigint, burnedToZero: bigint, sentToRewardPool: bigint, timestamp: bigint };
+      export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>
+      export type Filter = TypedDeferredTopicFilter<Event>
+      export type Log = TypedEventLog<Event>
+      export type LogDescription = TypedLogDescription<Event>
+    }
+
+  
+
+    export namespace BurnPercentUpdatedEvent {
+      export type InputTuple = [oldPercent: BigNumberish, newPercent: BigNumberish];
+      export type OutputTuple = [oldPercent: bigint, newPercent: bigint];
+      export interface OutputObject {oldPercent: bigint, newPercent: bigint };
+      export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>
+      export type Filter = TypedDeferredTopicFilter<Event>
+      export type Log = TypedEventLog<Event>
+      export type LogDescription = TypedLogDescription<Event>
+    }
+
+  
+
+    export namespace BurnToggledEvent {
+      export type InputTuple = [enabled: boolean];
+      export type OutputTuple = [enabled: boolean];
+      export interface OutputObject {enabled: boolean };
       export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>
       export type Filter = TypedDeferredTopicFilter<Event>
       export type Log = TypedEventLog<Event>
@@ -74,6 +146,18 @@ decodeFunctionResult(functionFragment: 'version', data: BytesLike): Result;
       export type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
       export type OutputTuple = [previousOwner: string, newOwner: string];
       export interface OutputObject {previousOwner: string, newOwner: string };
+      export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>
+      export type Filter = TypedDeferredTopicFilter<Event>
+      export type Log = TypedEventLog<Event>
+      export type LogDescription = TypedLogDescription<Event>
+    }
+
+  
+
+    export namespace RewardPoolUpdatedEvent {
+      export type InputTuple = [oldPool: AddressLike, newPool: AddressLike];
+      export type OutputTuple = [oldPool: string, newPool: string];
+      export interface OutputObject {oldPool: string, newPool: string };
       export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>
       export type Filter = TypedDeferredTopicFilter<Event>
       export type Log = TypedEventLog<Event>
@@ -128,7 +212,39 @@ decodeFunctionResult(functionFragment: 'version', data: BytesLike): Result;
 
     
     
+    BURN_DENOMINATOR: TypedContractMethod<
+      [],
+      [bigint],
+      'view'
+    >
+    
+
+    
+    BURN_TO_REWARD_RATIO: TypedContractMethod<
+      [],
+      [bigint],
+      'view'
+    >
+    
+
+    
+    BURN_TO_ZERO_RATIO: TypedContractMethod<
+      [],
+      [bigint],
+      'view'
+    >
+    
+
+    
     MAX_SUPPLY: TypedContractMethod<
+      [],
+      [bigint],
+      'view'
+    >
+    
+
+    
+    ONE_DAY: TypedContractMethod<
       [],
       [bigint],
       'view'
@@ -168,7 +284,55 @@ decodeFunctionResult(functionFragment: 'version', data: BytesLike): Result;
     
 
     
+    burnEnabled: TypedContractMethod<
+      [],
+      [boolean],
+      'view'
+    >
+    
+
+    
+    burnPercent: TypedContractMethod<
+      [],
+      [bigint],
+      'view'
+    >
+    
+
+    
     decimals: TypedContractMethod<
+      [],
+      [bigint],
+      'view'
+    >
+    
+
+    
+    executeBurn: TypedContractMethod<
+      [],
+      [void],
+      'nonpayable'
+    >
+    
+
+    
+    getBurnInfo: TypedContractMethod<
+      [],
+      [[bigint, bigint, bigint, string, boolean, bigint, bigint, bigint] & {_burnPercent: bigint, _lastBurnTime: bigint, _nextBurnTime: bigint, _rewardPool: string, _burnEnabled: boolean, _totalBurned: bigint, _totalBurnedToZero: bigint, _totalSentToRewardPool: bigint }],
+      'view'
+    >
+    
+
+    
+    getBurnableAmounts: TypedContractMethod<
+      [],
+      [[bigint, bigint] & {burnToZero: bigint, burnToReward: bigint }],
+      'view'
+    >
+    
+
+    
+    lastBurnTime: TypedContractMethod<
       [],
       [bigint],
       'view'
@@ -192,6 +356,14 @@ decodeFunctionResult(functionFragment: 'version', data: BytesLike): Result;
     
 
     
+    nextBurnTime: TypedContractMethod<
+      [],
+      [bigint],
+      'view'
+    >
+    
+
+    
     owner: TypedContractMethod<
       [],
       [string],
@@ -208,9 +380,65 @@ decodeFunctionResult(functionFragment: 'version', data: BytesLike): Result;
     
 
     
+    rewardPool: TypedContractMethod<
+      [],
+      [string],
+      'view'
+    >
+    
+
+    
+    setBurnPercent: TypedContractMethod<
+      [_percent: BigNumberish, ],
+      [void],
+      'nonpayable'
+    >
+    
+
+    
+    setRewardPool: TypedContractMethod<
+      [_pool: AddressLike, ],
+      [void],
+      'nonpayable'
+    >
+    
+
+    
     symbol: TypedContractMethod<
       [],
       [string],
+      'view'
+    >
+    
+
+    
+    toggleBurn: TypedContractMethod<
+      [_enable: boolean, ],
+      [void],
+      'nonpayable'
+    >
+    
+
+    
+    totalBurned: TypedContractMethod<
+      [],
+      [bigint],
+      'view'
+    >
+    
+
+    
+    totalBurnedToZero: TypedContractMethod<
+      [],
+      [bigint],
+      'view'
+    >
+    
+
+    
+    totalSentToRewardPool: TypedContractMethod<
+      [],
+      [bigint],
       'view'
     >
     
@@ -258,7 +486,27 @@ decodeFunctionResult(functionFragment: 'version', data: BytesLike): Result;
 
     getFunction<T extends ContractMethod = ContractMethod>(key: string | FunctionFragment): T;
 
-    getFunction(nameOrSignature: 'MAX_SUPPLY'): TypedContractMethod<
+    getFunction(nameOrSignature: 'BURN_DENOMINATOR'): TypedContractMethod<
+      [],
+      [bigint],
+      'view'
+    >;
+getFunction(nameOrSignature: 'BURN_TO_REWARD_RATIO'): TypedContractMethod<
+      [],
+      [bigint],
+      'view'
+    >;
+getFunction(nameOrSignature: 'BURN_TO_ZERO_RATIO'): TypedContractMethod<
+      [],
+      [bigint],
+      'view'
+    >;
+getFunction(nameOrSignature: 'MAX_SUPPLY'): TypedContractMethod<
+      [],
+      [bigint],
+      'view'
+    >;
+getFunction(nameOrSignature: 'ONE_DAY'): TypedContractMethod<
       [],
       [bigint],
       'view'
@@ -283,7 +531,37 @@ getFunction(nameOrSignature: 'batchMint'): TypedContractMethod<
       [void],
       'nonpayable'
     >;
+getFunction(nameOrSignature: 'burnEnabled'): TypedContractMethod<
+      [],
+      [boolean],
+      'view'
+    >;
+getFunction(nameOrSignature: 'burnPercent'): TypedContractMethod<
+      [],
+      [bigint],
+      'view'
+    >;
 getFunction(nameOrSignature: 'decimals'): TypedContractMethod<
+      [],
+      [bigint],
+      'view'
+    >;
+getFunction(nameOrSignature: 'executeBurn'): TypedContractMethod<
+      [],
+      [void],
+      'nonpayable'
+    >;
+getFunction(nameOrSignature: 'getBurnInfo'): TypedContractMethod<
+      [],
+      [[bigint, bigint, bigint, string, boolean, bigint, bigint, bigint] & {_burnPercent: bigint, _lastBurnTime: bigint, _nextBurnTime: bigint, _rewardPool: string, _burnEnabled: boolean, _totalBurned: bigint, _totalBurnedToZero: bigint, _totalSentToRewardPool: bigint }],
+      'view'
+    >;
+getFunction(nameOrSignature: 'getBurnableAmounts'): TypedContractMethod<
+      [],
+      [[bigint, bigint] & {burnToZero: bigint, burnToReward: bigint }],
+      'view'
+    >;
+getFunction(nameOrSignature: 'lastBurnTime'): TypedContractMethod<
       [],
       [bigint],
       'view'
@@ -298,6 +576,11 @@ getFunction(nameOrSignature: 'name'): TypedContractMethod<
       [string],
       'view'
     >;
+getFunction(nameOrSignature: 'nextBurnTime'): TypedContractMethod<
+      [],
+      [bigint],
+      'view'
+    >;
 getFunction(nameOrSignature: 'owner'): TypedContractMethod<
       [],
       [string],
@@ -308,9 +591,44 @@ getFunction(nameOrSignature: 'renounceOwnership'): TypedContractMethod<
       [void],
       'nonpayable'
     >;
+getFunction(nameOrSignature: 'rewardPool'): TypedContractMethod<
+      [],
+      [string],
+      'view'
+    >;
+getFunction(nameOrSignature: 'setBurnPercent'): TypedContractMethod<
+      [_percent: BigNumberish, ],
+      [void],
+      'nonpayable'
+    >;
+getFunction(nameOrSignature: 'setRewardPool'): TypedContractMethod<
+      [_pool: AddressLike, ],
+      [void],
+      'nonpayable'
+    >;
 getFunction(nameOrSignature: 'symbol'): TypedContractMethod<
       [],
       [string],
+      'view'
+    >;
+getFunction(nameOrSignature: 'toggleBurn'): TypedContractMethod<
+      [_enable: boolean, ],
+      [void],
+      'nonpayable'
+    >;
+getFunction(nameOrSignature: 'totalBurned'): TypedContractMethod<
+      [],
+      [bigint],
+      'view'
+    >;
+getFunction(nameOrSignature: 'totalBurnedToZero'): TypedContractMethod<
+      [],
+      [bigint],
+      'view'
+    >;
+getFunction(nameOrSignature: 'totalSentToRewardPool'): TypedContractMethod<
+      [],
+      [bigint],
       'view'
     >;
 getFunction(nameOrSignature: 'totalSupply'): TypedContractMethod<
@@ -340,8 +658,12 @@ getFunction(nameOrSignature: 'version'): TypedContractMethod<
     >;
 
     getEvent(key: 'Approval'): TypedContractEvent<ApprovalEvent.InputTuple, ApprovalEvent.OutputTuple, ApprovalEvent.OutputObject>;
+getEvent(key: 'BurnExecuted'): TypedContractEvent<BurnExecutedEvent.InputTuple, BurnExecutedEvent.OutputTuple, BurnExecutedEvent.OutputObject>;
+getEvent(key: 'BurnPercentUpdated'): TypedContractEvent<BurnPercentUpdatedEvent.InputTuple, BurnPercentUpdatedEvent.OutputTuple, BurnPercentUpdatedEvent.OutputObject>;
+getEvent(key: 'BurnToggled'): TypedContractEvent<BurnToggledEvent.InputTuple, BurnToggledEvent.OutputTuple, BurnToggledEvent.OutputObject>;
 getEvent(key: 'Mint'): TypedContractEvent<MintEvent.InputTuple, MintEvent.OutputTuple, MintEvent.OutputObject>;
 getEvent(key: 'OwnershipTransferred'): TypedContractEvent<OwnershipTransferredEvent.InputTuple, OwnershipTransferredEvent.OutputTuple, OwnershipTransferredEvent.OutputObject>;
+getEvent(key: 'RewardPoolUpdated'): TypedContractEvent<RewardPoolUpdatedEvent.InputTuple, RewardPoolUpdatedEvent.OutputTuple, RewardPoolUpdatedEvent.OutputObject>;
 getEvent(key: 'Transfer'): TypedContractEvent<TransferEvent.InputTuple, TransferEvent.OutputTuple, TransferEvent.OutputObject>;
 
     filters: {
@@ -350,12 +672,28 @@ getEvent(key: 'Transfer'): TypedContractEvent<TransferEvent.InputTuple, Transfer
       Approval: TypedContractEvent<ApprovalEvent.InputTuple, ApprovalEvent.OutputTuple, ApprovalEvent.OutputObject>;
     
 
+      'BurnExecuted(address,uint256,uint256,uint256,uint256)': TypedContractEvent<BurnExecutedEvent.InputTuple, BurnExecutedEvent.OutputTuple, BurnExecutedEvent.OutputObject>;
+      BurnExecuted: TypedContractEvent<BurnExecutedEvent.InputTuple, BurnExecutedEvent.OutputTuple, BurnExecutedEvent.OutputObject>;
+    
+
+      'BurnPercentUpdated(uint256,uint256)': TypedContractEvent<BurnPercentUpdatedEvent.InputTuple, BurnPercentUpdatedEvent.OutputTuple, BurnPercentUpdatedEvent.OutputObject>;
+      BurnPercentUpdated: TypedContractEvent<BurnPercentUpdatedEvent.InputTuple, BurnPercentUpdatedEvent.OutputTuple, BurnPercentUpdatedEvent.OutputObject>;
+    
+
+      'BurnToggled(bool)': TypedContractEvent<BurnToggledEvent.InputTuple, BurnToggledEvent.OutputTuple, BurnToggledEvent.OutputObject>;
+      BurnToggled: TypedContractEvent<BurnToggledEvent.InputTuple, BurnToggledEvent.OutputTuple, BurnToggledEvent.OutputObject>;
+    
+
       'Mint(address,uint256)': TypedContractEvent<MintEvent.InputTuple, MintEvent.OutputTuple, MintEvent.OutputObject>;
       Mint: TypedContractEvent<MintEvent.InputTuple, MintEvent.OutputTuple, MintEvent.OutputObject>;
     
 
       'OwnershipTransferred(address,address)': TypedContractEvent<OwnershipTransferredEvent.InputTuple, OwnershipTransferredEvent.OutputTuple, OwnershipTransferredEvent.OutputObject>;
       OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent.InputTuple, OwnershipTransferredEvent.OutputTuple, OwnershipTransferredEvent.OutputObject>;
+    
+
+      'RewardPoolUpdated(address,address)': TypedContractEvent<RewardPoolUpdatedEvent.InputTuple, RewardPoolUpdatedEvent.OutputTuple, RewardPoolUpdatedEvent.OutputObject>;
+      RewardPoolUpdated: TypedContractEvent<RewardPoolUpdatedEvent.InputTuple, RewardPoolUpdatedEvent.OutputTuple, RewardPoolUpdatedEvent.OutputObject>;
     
 
       'Transfer(address,address,uint256)': TypedContractEvent<TransferEvent.InputTuple, TransferEvent.OutputTuple, TransferEvent.OutputObject>;
