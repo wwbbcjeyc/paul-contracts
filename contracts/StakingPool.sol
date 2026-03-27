@@ -252,9 +252,8 @@ contract StakingPool is ReentrancyGuard, Ownable {
         
         // 调用推荐奖励分配
         if (address(referralContract) != address(0) && toClaim > 0) {
-            //实际分发给上级的金额
-            referralContract.distributeStaticReward(msg.sender, toClaim);
-            
+            uint256 distributed = referralContract.distributeStaticReward(msg.sender, toClaim);
+            // 注意：distributed 是实际分发给上级的金额
         }
         
         stake.pendingRewards = 0;
