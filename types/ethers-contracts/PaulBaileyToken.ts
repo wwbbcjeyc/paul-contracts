@@ -6,9 +6,9 @@ import type { TypedContractEvent, TypedDeferredTopicFilter, TypedEventLog, Typed
   
 
   export interface PaulBaileyTokenInterface extends Interface {
-    getFunction(nameOrSignature: "BASE_SLIPPAGE_BPS" | "BURN_ADDRESS" | "DEFLATION_PERCENT_BPS" | "DEFLATION_STOP_SUPPLY" | "INITIAL_SUPPLY" | "allowance" | "approve" | "balanceOf" | "burnShareBps" | "decimals" | "decreaseAllowance" | "deflationActive" | "executeDailyDeflation" | "getEffectiveTaxRate" | "increaseAllowance" | "lastDeflationTime" | "lastRecordedPrice" | "name" | "oracleAddress" | "owner" | "pairAddress" | "priceUpdateTimestamp" | "projectWallet" | "renounceOwnership" | "sell" | "setBurnShare" | "setOracleAddress" | "setPairAddress" | "setProjectWallet" | "setTreasuryWallet" | "symbol" | "timeUntilNextDeflation" | "totalSupply" | "transfer" | "transferFrom" | "transferOwnership" | "treasuryWallet" | "updatePriceManually"): FunctionFragment;
+    getFunction(nameOrSignature: "BASE_SLIPPAGE_BPS" | "BURN_ADDRESS" | "DEFLATION_PERCENT_BPS" | "DEFLATION_STOP_SUPPLY" | "INITIAL_SUPPLY" | "allowance" | "approve" | "authorizedMinters" | "balanceOf" | "burnShareBps" | "decimals" | "decreaseAllowance" | "deflationActive" | "executeDailyDeflation" | "fundContract" | "getEffectiveTaxRate" | "increaseAllowance" | "isAuthorizedMinter" | "lastDeflationTime" | "lastRecordedPrice" | "mintReward" | "name" | "oracleAddress" | "owner" | "pairAddress" | "priceUpdateTimestamp" | "projectWallet" | "renounceOwnership" | "sell" | "setAuthorizedMinter" | "setBurnShare" | "setOracleAddress" | "setPairAddress" | "setProjectWallet" | "setTreasuryWallet" | "symbol" | "timeUntilNextDeflation" | "timerAddress" | "totalSupply" | "transfer" | "transferFrom" | "transferOwnership" | "treasuryWallet" | "updatePriceManually"): FunctionFragment;
 
-    getEvent(nameOrSignatureOrTopic: "Approval" | "BurnShareUpdated" | "DailyDeflationExecuted" | "OracleAddressUpdated" | "OwnershipTransferred" | "PairAddressSet" | "PriceUpdated" | "ProjectWalletUpdated" | "TokensSold" | "Transfer" | "TreasuryUpdated"): EventFragment;
+    getEvent(nameOrSignatureOrTopic: "Approval" | "AuthorizedMinterUpdated" | "BurnShareUpdated" | "DailyDeflationExecuted" | "OracleAddressUpdated" | "OwnershipTransferred" | "PairAddressSet" | "PriceUpdated" | "ProjectWalletUpdated" | "RewardMinted" | "TokensSold" | "Transfer" | "TreasuryUpdated"): EventFragment;
 
     encodeFunctionData(functionFragment: 'BASE_SLIPPAGE_BPS', values?: undefined): string;
 encodeFunctionData(functionFragment: 'BURN_ADDRESS', values?: undefined): string;
@@ -17,16 +17,20 @@ encodeFunctionData(functionFragment: 'DEFLATION_STOP_SUPPLY', values?: undefined
 encodeFunctionData(functionFragment: 'INITIAL_SUPPLY', values?: undefined): string;
 encodeFunctionData(functionFragment: 'allowance', values: [AddressLike, AddressLike]): string;
 encodeFunctionData(functionFragment: 'approve', values: [AddressLike, BigNumberish]): string;
+encodeFunctionData(functionFragment: 'authorizedMinters', values: [AddressLike]): string;
 encodeFunctionData(functionFragment: 'balanceOf', values: [AddressLike]): string;
 encodeFunctionData(functionFragment: 'burnShareBps', values?: undefined): string;
 encodeFunctionData(functionFragment: 'decimals', values?: undefined): string;
 encodeFunctionData(functionFragment: 'decreaseAllowance', values: [AddressLike, BigNumberish]): string;
 encodeFunctionData(functionFragment: 'deflationActive', values?: undefined): string;
 encodeFunctionData(functionFragment: 'executeDailyDeflation', values?: undefined): string;
+encodeFunctionData(functionFragment: 'fundContract', values: [BigNumberish]): string;
 encodeFunctionData(functionFragment: 'getEffectiveTaxRate', values?: undefined): string;
 encodeFunctionData(functionFragment: 'increaseAllowance', values: [AddressLike, BigNumberish]): string;
+encodeFunctionData(functionFragment: 'isAuthorizedMinter', values: [AddressLike]): string;
 encodeFunctionData(functionFragment: 'lastDeflationTime', values?: undefined): string;
 encodeFunctionData(functionFragment: 'lastRecordedPrice', values?: undefined): string;
+encodeFunctionData(functionFragment: 'mintReward', values: [AddressLike, BigNumberish]): string;
 encodeFunctionData(functionFragment: 'name', values?: undefined): string;
 encodeFunctionData(functionFragment: 'oracleAddress', values?: undefined): string;
 encodeFunctionData(functionFragment: 'owner', values?: undefined): string;
@@ -35,6 +39,7 @@ encodeFunctionData(functionFragment: 'priceUpdateTimestamp', values?: undefined)
 encodeFunctionData(functionFragment: 'projectWallet', values?: undefined): string;
 encodeFunctionData(functionFragment: 'renounceOwnership', values?: undefined): string;
 encodeFunctionData(functionFragment: 'sell', values: [BigNumberish]): string;
+encodeFunctionData(functionFragment: 'setAuthorizedMinter', values: [AddressLike, boolean]): string;
 encodeFunctionData(functionFragment: 'setBurnShare', values: [BigNumberish]): string;
 encodeFunctionData(functionFragment: 'setOracleAddress', values: [AddressLike]): string;
 encodeFunctionData(functionFragment: 'setPairAddress', values: [AddressLike]): string;
@@ -42,6 +47,7 @@ encodeFunctionData(functionFragment: 'setProjectWallet', values: [AddressLike]):
 encodeFunctionData(functionFragment: 'setTreasuryWallet', values: [AddressLike]): string;
 encodeFunctionData(functionFragment: 'symbol', values?: undefined): string;
 encodeFunctionData(functionFragment: 'timeUntilNextDeflation', values?: undefined): string;
+encodeFunctionData(functionFragment: 'timerAddress', values?: undefined): string;
 encodeFunctionData(functionFragment: 'totalSupply', values?: undefined): string;
 encodeFunctionData(functionFragment: 'transfer', values: [AddressLike, BigNumberish]): string;
 encodeFunctionData(functionFragment: 'transferFrom', values: [AddressLike, AddressLike, BigNumberish]): string;
@@ -56,16 +62,20 @@ decodeFunctionResult(functionFragment: 'DEFLATION_STOP_SUPPLY', data: BytesLike)
 decodeFunctionResult(functionFragment: 'INITIAL_SUPPLY', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'allowance', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'approve', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'authorizedMinters', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'balanceOf', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'burnShareBps', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'decimals', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'decreaseAllowance', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'deflationActive', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'executeDailyDeflation', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'fundContract', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'getEffectiveTaxRate', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'increaseAllowance', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'isAuthorizedMinter', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'lastDeflationTime', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'lastRecordedPrice', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'mintReward', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'name', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'oracleAddress', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'owner', data: BytesLike): Result;
@@ -74,6 +84,7 @@ decodeFunctionResult(functionFragment: 'priceUpdateTimestamp', data: BytesLike):
 decodeFunctionResult(functionFragment: 'projectWallet', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'renounceOwnership', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'sell', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'setAuthorizedMinter', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'setBurnShare', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'setOracleAddress', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'setPairAddress', data: BytesLike): Result;
@@ -81,6 +92,7 @@ decodeFunctionResult(functionFragment: 'setProjectWallet', data: BytesLike): Res
 decodeFunctionResult(functionFragment: 'setTreasuryWallet', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'symbol', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'timeUntilNextDeflation', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'timerAddress', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'totalSupply', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'transfer', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'transferFrom', data: BytesLike): Result;
@@ -94,6 +106,18 @@ decodeFunctionResult(functionFragment: 'updatePriceManually', data: BytesLike): 
       export type InputTuple = [owner: AddressLike, spender: AddressLike, value: BigNumberish];
       export type OutputTuple = [owner: string, spender: string, value: bigint];
       export interface OutputObject {owner: string, spender: string, value: bigint };
+      export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>
+      export type Filter = TypedDeferredTopicFilter<Event>
+      export type Log = TypedEventLog<Event>
+      export type LogDescription = TypedLogDescription<Event>
+    }
+
+  
+
+    export namespace AuthorizedMinterUpdatedEvent {
+      export type InputTuple = [minter: AddressLike, authorized: boolean];
+      export type OutputTuple = [minter: string, authorized: boolean];
+      export interface OutputObject {minter: string, authorized: boolean };
       export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>
       export type Filter = TypedDeferredTopicFilter<Event>
       export type Log = TypedEventLog<Event>
@@ -178,6 +202,18 @@ decodeFunctionResult(functionFragment: 'updatePriceManually', data: BytesLike): 
       export type InputTuple = [newProjectWallet: AddressLike];
       export type OutputTuple = [newProjectWallet: string];
       export interface OutputObject {newProjectWallet: string };
+      export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>
+      export type Filter = TypedDeferredTopicFilter<Event>
+      export type Log = TypedEventLog<Event>
+      export type LogDescription = TypedLogDescription<Event>
+    }
+
+  
+
+    export namespace RewardMintedEvent {
+      export type InputTuple = [to: AddressLike, amount: BigNumberish];
+      export type OutputTuple = [to: string, amount: bigint];
+      export interface OutputObject {to: string, amount: bigint };
       export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>
       export type Filter = TypedDeferredTopicFilter<Event>
       export type Log = TypedEventLog<Event>
@@ -312,6 +348,14 @@ decodeFunctionResult(functionFragment: 'updatePriceManually', data: BytesLike): 
     
 
     
+    authorizedMinters: TypedContractMethod<
+      [arg0: AddressLike, ],
+      [boolean],
+      'view'
+    >
+    
+
+    
     balanceOf: TypedContractMethod<
       [account: AddressLike, ],
       [bigint],
@@ -360,6 +404,14 @@ decodeFunctionResult(functionFragment: 'updatePriceManually', data: BytesLike): 
     
 
     
+    fundContract: TypedContractMethod<
+      [amount: BigNumberish, ],
+      [void],
+      'nonpayable'
+    >
+    
+
+    
     getEffectiveTaxRate: TypedContractMethod<
       [],
       [bigint],
@@ -370,6 +422,14 @@ decodeFunctionResult(functionFragment: 'updatePriceManually', data: BytesLike): 
     
     increaseAllowance: TypedContractMethod<
       [arg0: AddressLike, arg1: BigNumberish, ],
+      [boolean],
+      'view'
+    >
+    
+
+    
+    isAuthorizedMinter: TypedContractMethod<
+      [account: AddressLike, ],
       [boolean],
       'view'
     >
@@ -388,6 +448,14 @@ decodeFunctionResult(functionFragment: 'updatePriceManually', data: BytesLike): 
       [],
       [bigint],
       'view'
+    >
+    
+
+    
+    mintReward: TypedContractMethod<
+      [to: AddressLike, amount: BigNumberish, ],
+      [void],
+      'nonpayable'
     >
     
 
@@ -456,6 +524,14 @@ decodeFunctionResult(functionFragment: 'updatePriceManually', data: BytesLike): 
     
 
     
+    setAuthorizedMinter: TypedContractMethod<
+      [minter: AddressLike, authorized: boolean, ],
+      [void],
+      'nonpayable'
+    >
+    
+
+    
     setBurnShare: TypedContractMethod<
       [_burnShareBps: BigNumberish, ],
       [void],
@@ -507,6 +583,14 @@ decodeFunctionResult(functionFragment: 'updatePriceManually', data: BytesLike): 
     timeUntilNextDeflation: TypedContractMethod<
       [],
       [bigint],
+      'view'
+    >
+    
+
+    
+    timerAddress: TypedContractMethod<
+      [],
+      [string],
       'view'
     >
     
@@ -597,6 +681,11 @@ getFunction(nameOrSignature: 'approve'): TypedContractMethod<
       [boolean],
       'view'
     >;
+getFunction(nameOrSignature: 'authorizedMinters'): TypedContractMethod<
+      [arg0: AddressLike, ],
+      [boolean],
+      'view'
+    >;
 getFunction(nameOrSignature: 'balanceOf'): TypedContractMethod<
       [account: AddressLike, ],
       [bigint],
@@ -627,6 +716,11 @@ getFunction(nameOrSignature: 'executeDailyDeflation'): TypedContractMethod<
       [void],
       'nonpayable'
     >;
+getFunction(nameOrSignature: 'fundContract'): TypedContractMethod<
+      [amount: BigNumberish, ],
+      [void],
+      'nonpayable'
+    >;
 getFunction(nameOrSignature: 'getEffectiveTaxRate'): TypedContractMethod<
       [],
       [bigint],
@@ -634,6 +728,11 @@ getFunction(nameOrSignature: 'getEffectiveTaxRate'): TypedContractMethod<
     >;
 getFunction(nameOrSignature: 'increaseAllowance'): TypedContractMethod<
       [arg0: AddressLike, arg1: BigNumberish, ],
+      [boolean],
+      'view'
+    >;
+getFunction(nameOrSignature: 'isAuthorizedMinter'): TypedContractMethod<
+      [account: AddressLike, ],
       [boolean],
       'view'
     >;
@@ -646,6 +745,11 @@ getFunction(nameOrSignature: 'lastRecordedPrice'): TypedContractMethod<
       [],
       [bigint],
       'view'
+    >;
+getFunction(nameOrSignature: 'mintReward'): TypedContractMethod<
+      [to: AddressLike, amount: BigNumberish, ],
+      [void],
+      'nonpayable'
     >;
 getFunction(nameOrSignature: 'name'): TypedContractMethod<
       [],
@@ -687,6 +791,11 @@ getFunction(nameOrSignature: 'sell'): TypedContractMethod<
       [void],
       'nonpayable'
     >;
+getFunction(nameOrSignature: 'setAuthorizedMinter'): TypedContractMethod<
+      [minter: AddressLike, authorized: boolean, ],
+      [void],
+      'nonpayable'
+    >;
 getFunction(nameOrSignature: 'setBurnShare'): TypedContractMethod<
       [_burnShareBps: BigNumberish, ],
       [void],
@@ -722,6 +831,11 @@ getFunction(nameOrSignature: 'timeUntilNextDeflation'): TypedContractMethod<
       [bigint],
       'view'
     >;
+getFunction(nameOrSignature: 'timerAddress'): TypedContractMethod<
+      [],
+      [string],
+      'view'
+    >;
 getFunction(nameOrSignature: 'totalSupply'): TypedContractMethod<
       [],
       [bigint],
@@ -754,6 +868,7 @@ getFunction(nameOrSignature: 'updatePriceManually'): TypedContractMethod<
     >;
 
     getEvent(key: 'Approval'): TypedContractEvent<ApprovalEvent.InputTuple, ApprovalEvent.OutputTuple, ApprovalEvent.OutputObject>;
+getEvent(key: 'AuthorizedMinterUpdated'): TypedContractEvent<AuthorizedMinterUpdatedEvent.InputTuple, AuthorizedMinterUpdatedEvent.OutputTuple, AuthorizedMinterUpdatedEvent.OutputObject>;
 getEvent(key: 'BurnShareUpdated'): TypedContractEvent<BurnShareUpdatedEvent.InputTuple, BurnShareUpdatedEvent.OutputTuple, BurnShareUpdatedEvent.OutputObject>;
 getEvent(key: 'DailyDeflationExecuted'): TypedContractEvent<DailyDeflationExecutedEvent.InputTuple, DailyDeflationExecutedEvent.OutputTuple, DailyDeflationExecutedEvent.OutputObject>;
 getEvent(key: 'OracleAddressUpdated'): TypedContractEvent<OracleAddressUpdatedEvent.InputTuple, OracleAddressUpdatedEvent.OutputTuple, OracleAddressUpdatedEvent.OutputObject>;
@@ -761,6 +876,7 @@ getEvent(key: 'OwnershipTransferred'): TypedContractEvent<OwnershipTransferredEv
 getEvent(key: 'PairAddressSet'): TypedContractEvent<PairAddressSetEvent.InputTuple, PairAddressSetEvent.OutputTuple, PairAddressSetEvent.OutputObject>;
 getEvent(key: 'PriceUpdated'): TypedContractEvent<PriceUpdatedEvent.InputTuple, PriceUpdatedEvent.OutputTuple, PriceUpdatedEvent.OutputObject>;
 getEvent(key: 'ProjectWalletUpdated'): TypedContractEvent<ProjectWalletUpdatedEvent.InputTuple, ProjectWalletUpdatedEvent.OutputTuple, ProjectWalletUpdatedEvent.OutputObject>;
+getEvent(key: 'RewardMinted'): TypedContractEvent<RewardMintedEvent.InputTuple, RewardMintedEvent.OutputTuple, RewardMintedEvent.OutputObject>;
 getEvent(key: 'TokensSold'): TypedContractEvent<TokensSoldEvent.InputTuple, TokensSoldEvent.OutputTuple, TokensSoldEvent.OutputObject>;
 getEvent(key: 'Transfer'): TypedContractEvent<TransferEvent.InputTuple, TransferEvent.OutputTuple, TransferEvent.OutputObject>;
 getEvent(key: 'TreasuryUpdated'): TypedContractEvent<TreasuryUpdatedEvent.InputTuple, TreasuryUpdatedEvent.OutputTuple, TreasuryUpdatedEvent.OutputObject>;
@@ -769,6 +885,10 @@ getEvent(key: 'TreasuryUpdated'): TypedContractEvent<TreasuryUpdatedEvent.InputT
       
       'Approval(address,address,uint256)': TypedContractEvent<ApprovalEvent.InputTuple, ApprovalEvent.OutputTuple, ApprovalEvent.OutputObject>;
       Approval: TypedContractEvent<ApprovalEvent.InputTuple, ApprovalEvent.OutputTuple, ApprovalEvent.OutputObject>;
+    
+
+      'AuthorizedMinterUpdated(address,bool)': TypedContractEvent<AuthorizedMinterUpdatedEvent.InputTuple, AuthorizedMinterUpdatedEvent.OutputTuple, AuthorizedMinterUpdatedEvent.OutputObject>;
+      AuthorizedMinterUpdated: TypedContractEvent<AuthorizedMinterUpdatedEvent.InputTuple, AuthorizedMinterUpdatedEvent.OutputTuple, AuthorizedMinterUpdatedEvent.OutputObject>;
     
 
       'BurnShareUpdated(uint256)': TypedContractEvent<BurnShareUpdatedEvent.InputTuple, BurnShareUpdatedEvent.OutputTuple, BurnShareUpdatedEvent.OutputObject>;
@@ -797,6 +917,10 @@ getEvent(key: 'TreasuryUpdated'): TypedContractEvent<TreasuryUpdatedEvent.InputT
 
       'ProjectWalletUpdated(address)': TypedContractEvent<ProjectWalletUpdatedEvent.InputTuple, ProjectWalletUpdatedEvent.OutputTuple, ProjectWalletUpdatedEvent.OutputObject>;
       ProjectWalletUpdated: TypedContractEvent<ProjectWalletUpdatedEvent.InputTuple, ProjectWalletUpdatedEvent.OutputTuple, ProjectWalletUpdatedEvent.OutputObject>;
+    
+
+      'RewardMinted(address,uint256)': TypedContractEvent<RewardMintedEvent.InputTuple, RewardMintedEvent.OutputTuple, RewardMintedEvent.OutputObject>;
+      RewardMinted: TypedContractEvent<RewardMintedEvent.InputTuple, RewardMintedEvent.OutputTuple, RewardMintedEvent.OutputObject>;
     
 
       'TokensSold(address,uint256,uint256,uint256)': TypedContractEvent<TokensSoldEvent.InputTuple, TokensSoldEvent.OutputTuple, TokensSoldEvent.OutputObject>;

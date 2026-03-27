@@ -2,13 +2,13 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { BaseContract, BigNumberish, BytesLike, FunctionFragment, Result, Interface, EventFragment, AddressLike, ContractRunner, ContractMethod, Listener } from "ethers"
-import type { TypedContractEvent, TypedDeferredTopicFilter, TypedEventLog, TypedLogDescription, TypedListener, TypedContractMethod } from "./common.js"
+import type { TypedContractEvent, TypedDeferredTopicFilter, TypedEventLog, TypedLogDescription, TypedListener, TypedContractMethod } from "../common.js"
   
 
   export interface ReferralRewardInterface extends Interface {
-    getFunction(nameOrSignature: "MAX_GENERATION" | "MIN_VALID_USER_AMOUNT" | "PEER_REWARD_RATE" | "TOTAL_LEVELS" | "authorizedCallers" | "bindReferrer" | "claimLevelReward" | "claimStaticReward" | "distributeStaticReward" | "emergencyWithdrawToken" | "generationRewardRates" | "getGenerationReward" | "getPendingRewards" | "getUserLevelInfo" | "getUserReferrals" | "isRegistered" | "levelConfigs" | "onWithdrawClearContribution" | "owner" | "renounceOwnership" | "rewardToken" | "setAuthorizedCaller" | "setRewardToken" | "totalUsers" | "totalValidUsers" | "transferOwnership" | "updateTeamPerformance" | "users"): FunctionFragment;
+    getFunction(nameOrSignature: "MAX_GENERATION" | "MIN_VALID_USER_AMOUNT" | "PEER_REWARD_RATE" | "TOTAL_LEVELS" | "authorizedCallers" | "bindReferrer" | "claimLevelReward" | "claimStaticReward" | "distributeStaticReward" | "emergencyWithdrawToken" | "generationRewardRates" | "getPendingRewards" | "getUserLevelInfo" | "getUserReferrals" | "isRegistered" | "isUserValid" | "levelConfigs" | "onWithdrawClearContribution" | "owner" | "renounceOwnership" | "rewardToken" | "setAuthorizedCaller" | "setRewardToken" | "setStakingPool" | "stakingPool" | "totalUsers" | "totalValidUsers" | "transferOwnership" | "updateTeamPerformance" | "users"): FunctionFragment;
 
-    getEvent(nameOrSignatureOrTopic: "AuthorizedCallerSet" | "LevelRewardClaimed" | "LevelUpgraded" | "OwnershipTransferred" | "ReferrerBound" | "StaticRewardClaimed" | "StaticRewardDistributed" | "TeamPerformanceUpdated"): EventFragment;
+    getEvent(nameOrSignatureOrTopic: "AuthorizedCallerSet" | "LevelRewardClaimed" | "LevelUpgraded" | "OwnershipTransferred" | "ReferrerBound" | "StaticRewardClaimed" | "StaticRewardDistributed" | "TeamPerformanceUpdated" | "UserStatusUpdated"): EventFragment;
 
     encodeFunctionData(functionFragment: 'MAX_GENERATION', values?: undefined): string;
 encodeFunctionData(functionFragment: 'MIN_VALID_USER_AMOUNT', values?: undefined): string;
@@ -21,11 +21,11 @@ encodeFunctionData(functionFragment: 'claimStaticReward', values?: undefined): s
 encodeFunctionData(functionFragment: 'distributeStaticReward', values: [AddressLike, BigNumberish]): string;
 encodeFunctionData(functionFragment: 'emergencyWithdrawToken', values: [AddressLike, BigNumberish]): string;
 encodeFunctionData(functionFragment: 'generationRewardRates', values: [BigNumberish]): string;
-encodeFunctionData(functionFragment: 'getGenerationReward', values: [AddressLike, BigNumberish]): string;
 encodeFunctionData(functionFragment: 'getPendingRewards', values: [AddressLike]): string;
 encodeFunctionData(functionFragment: 'getUserLevelInfo', values: [AddressLike]): string;
 encodeFunctionData(functionFragment: 'getUserReferrals', values: [AddressLike]): string;
 encodeFunctionData(functionFragment: 'isRegistered', values: [AddressLike]): string;
+encodeFunctionData(functionFragment: 'isUserValid', values: [AddressLike]): string;
 encodeFunctionData(functionFragment: 'levelConfigs', values: [BigNumberish]): string;
 encodeFunctionData(functionFragment: 'onWithdrawClearContribution', values: [AddressLike]): string;
 encodeFunctionData(functionFragment: 'owner', values?: undefined): string;
@@ -33,6 +33,8 @@ encodeFunctionData(functionFragment: 'renounceOwnership', values?: undefined): s
 encodeFunctionData(functionFragment: 'rewardToken', values?: undefined): string;
 encodeFunctionData(functionFragment: 'setAuthorizedCaller', values: [AddressLike, boolean]): string;
 encodeFunctionData(functionFragment: 'setRewardToken', values: [AddressLike]): string;
+encodeFunctionData(functionFragment: 'setStakingPool', values: [AddressLike]): string;
+encodeFunctionData(functionFragment: 'stakingPool', values?: undefined): string;
 encodeFunctionData(functionFragment: 'totalUsers', values?: undefined): string;
 encodeFunctionData(functionFragment: 'totalValidUsers', values?: undefined): string;
 encodeFunctionData(functionFragment: 'transferOwnership', values: [AddressLike]): string;
@@ -50,11 +52,11 @@ decodeFunctionResult(functionFragment: 'claimStaticReward', data: BytesLike): Re
 decodeFunctionResult(functionFragment: 'distributeStaticReward', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'emergencyWithdrawToken', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'generationRewardRates', data: BytesLike): Result;
-decodeFunctionResult(functionFragment: 'getGenerationReward', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'getPendingRewards', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'getUserLevelInfo', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'getUserReferrals', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'isRegistered', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'isUserValid', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'levelConfigs', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'onWithdrawClearContribution', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'owner', data: BytesLike): Result;
@@ -62,6 +64,8 @@ decodeFunctionResult(functionFragment: 'renounceOwnership', data: BytesLike): Re
 decodeFunctionResult(functionFragment: 'rewardToken', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'setAuthorizedCaller', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'setRewardToken', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'setStakingPool', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'stakingPool', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'totalUsers', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'totalValidUsers', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'transferOwnership', data: BytesLike): Result;
@@ -158,6 +162,18 @@ decodeFunctionResult(functionFragment: 'users', data: BytesLike): Result;
       export type InputTuple = [user: AddressLike, amountChange: BigNumberish, newTotal: BigNumberish, newSmall: BigNumberish];
       export type OutputTuple = [user: string, amountChange: bigint, newTotal: bigint, newSmall: bigint];
       export interface OutputObject {user: string, amountChange: bigint, newTotal: bigint, newSmall: bigint };
+      export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>
+      export type Filter = TypedDeferredTopicFilter<Event>
+      export type Log = TypedEventLog<Event>
+      export type LogDescription = TypedLogDescription<Event>
+    }
+
+  
+
+    export namespace UserStatusUpdatedEvent {
+      export type InputTuple = [user: AddressLike, isValid: boolean];
+      export type OutputTuple = [user: string, isValid: boolean];
+      export interface OutputObject {user: string, isValid: boolean };
       export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>
       export type Filter = TypedDeferredTopicFilter<Event>
       export type Log = TypedEventLog<Event>
@@ -288,14 +304,6 @@ decodeFunctionResult(functionFragment: 'users', data: BytesLike): Result;
     
 
     
-    getGenerationReward: TypedContractMethod<
-      [user: AddressLike, generation: BigNumberish, ],
-      [bigint],
-      'view'
-    >
-    
-
-    
     getPendingRewards: TypedContractMethod<
       [user: AddressLike, ],
       [[bigint, bigint, bigint] & {staticRewards: bigint, levelRewards: bigint, totalRewards: bigint }],
@@ -306,7 +314,7 @@ decodeFunctionResult(functionFragment: 'users', data: BytesLike): Result;
     
     getUserLevelInfo: TypedContractMethod<
       [user: AddressLike, ],
-      [[bigint, bigint, bigint, bigint] & {level: bigint, smallTeamPerformance: bigint, totalTeamPerformance: bigint, requiredForNextLevel: bigint }],
+      [[bigint, bigint, bigint, bigint, boolean, bigint] & {level: bigint, smallTeamPerformance: bigint, totalTeamPerformance: bigint, requiredForNextLevel: bigint, isValidUser: boolean, totalStaticEarned: bigint }],
       'view'
     >
     
@@ -322,6 +330,14 @@ decodeFunctionResult(functionFragment: 'users', data: BytesLike): Result;
     
     isRegistered: TypedContractMethod<
       [arg0: AddressLike, ],
+      [boolean],
+      'view'
+    >
+    
+
+    
+    isUserValid: TypedContractMethod<
+      [user: AddressLike, ],
       [boolean],
       'view'
     >
@@ -384,6 +400,22 @@ decodeFunctionResult(functionFragment: 'users', data: BytesLike): Result;
     
 
     
+    setStakingPool: TypedContractMethod<
+      [_stakingPool: AddressLike, ],
+      [void],
+      'nonpayable'
+    >
+    
+
+    
+    stakingPool: TypedContractMethod<
+      [],
+      [string],
+      'view'
+    >
+    
+
+    
     totalUsers: TypedContractMethod<
       [],
       [bigint],
@@ -418,7 +450,7 @@ decodeFunctionResult(functionFragment: 'users', data: BytesLike): Result;
     
     users: TypedContractMethod<
       [arg0: AddressLike, ],
-      [[string, bigint, bigint, bigint, boolean, bigint, bigint, bigint] & {referrer: string, totalTeamPerformance: bigint, smallTeamPerformance: bigint, level: bigint, isValidUser: boolean, pendingStaticRewards: bigint, pendingLevelRewards: bigint, lastUpdateTime: bigint }],
+      [[string, bigint, bigint, bigint, boolean, bigint, bigint, bigint, bigint, bigint] & {referrer: string, totalTeamPerformance: bigint, smallTeamPerformance: bigint, level: bigint, isValidUser: boolean, pendingStaticRewards: bigint, pendingLevelRewards: bigint, lastUpdateTime: bigint, totalStaticEarned: bigint, totalDeposited: bigint }],
       'view'
     >
     
@@ -481,11 +513,6 @@ getFunction(nameOrSignature: 'generationRewardRates'): TypedContractMethod<
       [bigint],
       'view'
     >;
-getFunction(nameOrSignature: 'getGenerationReward'): TypedContractMethod<
-      [user: AddressLike, generation: BigNumberish, ],
-      [bigint],
-      'view'
-    >;
 getFunction(nameOrSignature: 'getPendingRewards'): TypedContractMethod<
       [user: AddressLike, ],
       [[bigint, bigint, bigint] & {staticRewards: bigint, levelRewards: bigint, totalRewards: bigint }],
@@ -493,7 +520,7 @@ getFunction(nameOrSignature: 'getPendingRewards'): TypedContractMethod<
     >;
 getFunction(nameOrSignature: 'getUserLevelInfo'): TypedContractMethod<
       [user: AddressLike, ],
-      [[bigint, bigint, bigint, bigint] & {level: bigint, smallTeamPerformance: bigint, totalTeamPerformance: bigint, requiredForNextLevel: bigint }],
+      [[bigint, bigint, bigint, bigint, boolean, bigint] & {level: bigint, smallTeamPerformance: bigint, totalTeamPerformance: bigint, requiredForNextLevel: bigint, isValidUser: boolean, totalStaticEarned: bigint }],
       'view'
     >;
 getFunction(nameOrSignature: 'getUserReferrals'): TypedContractMethod<
@@ -503,6 +530,11 @@ getFunction(nameOrSignature: 'getUserReferrals'): TypedContractMethod<
     >;
 getFunction(nameOrSignature: 'isRegistered'): TypedContractMethod<
       [arg0: AddressLike, ],
+      [boolean],
+      'view'
+    >;
+getFunction(nameOrSignature: 'isUserValid'): TypedContractMethod<
+      [user: AddressLike, ],
       [boolean],
       'view'
     >;
@@ -541,6 +573,16 @@ getFunction(nameOrSignature: 'setRewardToken'): TypedContractMethod<
       [void],
       'nonpayable'
     >;
+getFunction(nameOrSignature: 'setStakingPool'): TypedContractMethod<
+      [_stakingPool: AddressLike, ],
+      [void],
+      'nonpayable'
+    >;
+getFunction(nameOrSignature: 'stakingPool'): TypedContractMethod<
+      [],
+      [string],
+      'view'
+    >;
 getFunction(nameOrSignature: 'totalUsers'): TypedContractMethod<
       [],
       [bigint],
@@ -563,7 +605,7 @@ getFunction(nameOrSignature: 'updateTeamPerformance'): TypedContractMethod<
     >;
 getFunction(nameOrSignature: 'users'): TypedContractMethod<
       [arg0: AddressLike, ],
-      [[string, bigint, bigint, bigint, boolean, bigint, bigint, bigint] & {referrer: string, totalTeamPerformance: bigint, smallTeamPerformance: bigint, level: bigint, isValidUser: boolean, pendingStaticRewards: bigint, pendingLevelRewards: bigint, lastUpdateTime: bigint }],
+      [[string, bigint, bigint, bigint, boolean, bigint, bigint, bigint, bigint, bigint] & {referrer: string, totalTeamPerformance: bigint, smallTeamPerformance: bigint, level: bigint, isValidUser: boolean, pendingStaticRewards: bigint, pendingLevelRewards: bigint, lastUpdateTime: bigint, totalStaticEarned: bigint, totalDeposited: bigint }],
       'view'
     >;
 
@@ -575,6 +617,7 @@ getEvent(key: 'ReferrerBound'): TypedContractEvent<ReferrerBoundEvent.InputTuple
 getEvent(key: 'StaticRewardClaimed'): TypedContractEvent<StaticRewardClaimedEvent.InputTuple, StaticRewardClaimedEvent.OutputTuple, StaticRewardClaimedEvent.OutputObject>;
 getEvent(key: 'StaticRewardDistributed'): TypedContractEvent<StaticRewardDistributedEvent.InputTuple, StaticRewardDistributedEvent.OutputTuple, StaticRewardDistributedEvent.OutputObject>;
 getEvent(key: 'TeamPerformanceUpdated'): TypedContractEvent<TeamPerformanceUpdatedEvent.InputTuple, TeamPerformanceUpdatedEvent.OutputTuple, TeamPerformanceUpdatedEvent.OutputObject>;
+getEvent(key: 'UserStatusUpdated'): TypedContractEvent<UserStatusUpdatedEvent.InputTuple, UserStatusUpdatedEvent.OutputTuple, UserStatusUpdatedEvent.OutputObject>;
 
     filters: {
       
@@ -608,6 +651,10 @@ getEvent(key: 'TeamPerformanceUpdated'): TypedContractEvent<TeamPerformanceUpdat
 
       'TeamPerformanceUpdated(address,int256,uint256,uint256)': TypedContractEvent<TeamPerformanceUpdatedEvent.InputTuple, TeamPerformanceUpdatedEvent.OutputTuple, TeamPerformanceUpdatedEvent.OutputObject>;
       TeamPerformanceUpdated: TypedContractEvent<TeamPerformanceUpdatedEvent.InputTuple, TeamPerformanceUpdatedEvent.OutputTuple, TeamPerformanceUpdatedEvent.OutputObject>;
+    
+
+      'UserStatusUpdated(address,bool)': TypedContractEvent<UserStatusUpdatedEvent.InputTuple, UserStatusUpdatedEvent.OutputTuple, UserStatusUpdatedEvent.OutputObject>;
+      UserStatusUpdated: TypedContractEvent<UserStatusUpdatedEvent.InputTuple, UserStatusUpdatedEvent.OutputTuple, UserStatusUpdatedEvent.OutputObject>;
     
     };
   }

@@ -11,6 +11,7 @@ import * as Contracts from "./index.js";
 declare module "@nomicfoundation/hardhat-ethers/types" {
   interface HardhatEthersHelpers extends HardhatEthersHelpersBase {
   getContractFactory(name: 'PaulBaileyToken', signerOrOptions?: ethers.Signer | FactoryOptions): Promise<Contracts.PaulBaileyToken__factory>
+getContractFactory(name: 'IStakingPool', signerOrOptions?: ethers.Signer | FactoryOptions): Promise<Contracts.IStakingPool__factory>
 getContractFactory(name: 'ReferralReward', signerOrOptions?: ethers.Signer | FactoryOptions): Promise<Contracts.ReferralReward__factory>
 getContractFactory(name: 'IDEXRouter', signerOrOptions?: ethers.Signer | FactoryOptions): Promise<Contracts.IDEXRouter__factory>
 getContractFactory(name: 'IPaulBaileyToken', signerOrOptions?: ethers.Signer | FactoryOptions): Promise<Contracts.IPaulBaileyToken__factory>
@@ -18,6 +19,7 @@ getContractFactory(name: 'IReferralReward', signerOrOptions?: ethers.Signer | Fa
 getContractFactory(name: 'StakingPool', signerOrOptions?: ethers.Signer | FactoryOptions): Promise<Contracts.StakingPool__factory>
 
   getContractAt(name: 'PaulBaileyToken', address: string | ethers.Addressable, signer?: ethers.Signer): Promise<Contracts.PaulBaileyToken>
+getContractAt(name: 'IStakingPool', address: string | ethers.Addressable, signer?: ethers.Signer): Promise<Contracts.IStakingPool>
 getContractAt(name: 'ReferralReward', address: string | ethers.Addressable, signer?: ethers.Signer): Promise<Contracts.ReferralReward>
 getContractAt(name: 'IDEXRouter', address: string | ethers.Addressable, signer?: ethers.Signer): Promise<Contracts.IDEXRouter>
 getContractAt(name: 'IPaulBaileyToken', address: string | ethers.Addressable, signer?: ethers.Signer): Promise<Contracts.IPaulBaileyToken>
@@ -25,6 +27,7 @@ getContractAt(name: 'IReferralReward', address: string | ethers.Addressable, sig
 getContractAt(name: 'StakingPool', address: string | ethers.Addressable, signer?: ethers.Signer): Promise<Contracts.StakingPool>
 
   deployContract(name: 'PaulBaileyToken', signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.PaulBaileyToken>
+deployContract(name: 'IStakingPool', signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.IStakingPool>
 deployContract(name: 'ReferralReward', signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.ReferralReward>
 deployContract(name: 'IDEXRouter', signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.IDEXRouter>
 deployContract(name: 'IPaulBaileyToken', signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.IPaulBaileyToken>
@@ -32,6 +35,7 @@ deployContract(name: 'IReferralReward', signerOrOptions?: ethers.Signer | Deploy
 deployContract(name: 'StakingPool', signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.StakingPool>
 
   deployContract(name: 'PaulBaileyToken', args: any[], signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.PaulBaileyToken>
+deployContract(name: 'IStakingPool', args: any[], signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.IStakingPool>
 deployContract(name: 'ReferralReward', args: any[], signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.ReferralReward>
 deployContract(name: 'IDEXRouter', args: any[], signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.IDEXRouter>
 deployContract(name: 'IPaulBaileyToken', args: any[], signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.IPaulBaileyToken>
